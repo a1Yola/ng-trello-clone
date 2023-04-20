@@ -1,0 +1,46 @@
+.header {
+  &__container {
+    display: flex;
+    align-items: center;
+    margin: 0 2rem;
+    width: 100%;
+  }
+
+  &__title,
+  &__auth-button {
+    letter-spacing: 0.14em;
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+  }
+
+  &__left-panel {
+    flex-grow: 1;
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    border-right: 1px solid #97979744;
+    padding: .15rem 1.25rem .15rem 0;
+    width: fit-content;
+
+    >a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #191f2b;
+      width: fit-content;
+      position: relative;
+      z-index: 2;
+
+      &:hover {
+        cursor: pointer;
+        color: #fab140;
+      }
+
+      >img {
+        max-width: 5rem;
+      }
+    }
+  }
+}

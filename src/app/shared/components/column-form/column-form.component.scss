@@ -1,0 +1,68 @@
+.column-form {
+  width: 22.625rem;
+  height: fit-content;
+
+  >form {
+    >:nth-child(2) {
+      display: flex;
+      align-items: center;
+      column-gap: .5rem;
+    }
+  }
+
+  &__add-column-button {
+    padding: .72rem 2rem;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+
+    &:hover {
+      transform: scale(1.015);
+    }
+  }
+
+  &__title-input {
+    padding: .719rem;
+    width: 85%;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    margin-bottom: .65rem;
+    border: 2px solid #cecece;
+  }
+
+  &__add-list-button {
+    padding: .5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    max-width: 12.5rem;
+    border-radius: .5rem;
+    width: 100%;
+    color: #F4F4F4;
+    background-color: #000;
+    border: 2px solid;
+
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
+  }
+
+  &__close-list-button {
+    background-color: inherit;
+    padding: 0;
+    border: none;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+}

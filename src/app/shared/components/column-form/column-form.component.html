@@ -1,0 +1,33 @@
+<form class="column-form" (click)="$event.stopPropagation()">
+  <ng-container
+    [ngTemplateOutlet]="
+      isVisibleColumnForm ? addColumnForm : showColumnFormButton
+    "></ng-container>
+
+  <ng-template #showColumnFormButton>
+    <button class="column-form__add-column-button" (click)="isVisibleColumnForm = true">
+      + Add new column
+    </button>
+  </ng-template>
+
+  <ng-template #addColumnForm>
+    <form #columnForm>
+      <input
+        class="column-form__title-input"
+        #listInput
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="title"
+        [ngModelOptions]="{ standalone: true }"
+        [value]="title" />
+      <div>
+        <button class="column-form__add-list-button" (click)="addList({title})">
+          Add list
+        </button>
+        <button class="column-form__close-list-button" (click)="closeColumnForm()">
+          <mat-icon fontIcon="close"></mat-icon>
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</form>

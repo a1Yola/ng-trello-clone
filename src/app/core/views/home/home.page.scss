@@ -1,0 +1,22 @@
+.home {
+  &__container {
+    margin: 2rem;
+    display: flex;
+    column-gap: 1.5rem;
+    width: inherit;
+  }
+
+  &__column {
+    width: 22.625rem;
+    position: relative;
+  }
+}
+
+.preloader {
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem !important;
+}

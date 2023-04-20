@@ -1,0 +1,93 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-trello-clone-primary: mat.define-palette(mat.$gray-palette, 900, 800, 900);
+$angular-trello-clone-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$angular-trello-clone-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$angular-trello-clone-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-trello-clone-primary,
+    accent: $angular-trello-clone-accent,
+    warn: $angular-trello-clone-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($angular-trello-clone-theme);
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - .95rem);
+
+  &__header {
+    >:first-child {
+      background: #fff;
+      position: fixed;
+      padding: 0;
+      border-bottom: 1px solid #97979744;
+      z-index: 2;
+    }
+  }
+
+  // &__footer {
+  //   background-color: #010102;
+  //   color: #6d6d6d;
+  //   width: 100%;
+  //   min-height: 8.5rem;
+  //   display: flex;
+  //   align-items: center;
+
+  //   >:first-child {
+  //     display: flex;
+  //     align-items: center;
+  //     flex-direction: column;
+
+  //     p {
+  //       margin: .5rem;
+  //       font-size: 1.15rem;
+  //       line-height: 1.25rem;
+  //       letter-spacing: .05rem;
+  //     }
+  //   }
+  // }
+}

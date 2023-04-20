@@ -1,0 +1,24 @@
+<ng-container *ngIf="lists$ | async as lists">
+  <ng-template [ngIf]="lists">
+    <div
+      class="home__container"
+      cdkDropListGroup
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="lists"
+      (cdkDropListDropped)="drop($event)">
+      <div
+        class="home__column"
+        *ngFor="let list of lists; trackBy: identifyListById"
+        cdkDrag>
+        <app-list *ngIf="list" [list]="list"></app-list>
+      </div>
+
+      <app-column-form></app-column-form>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="!lists.length">
+    <mat-spinner class="preloader"> </mat-spinner>
+  </ng-template>
+</ng-container>

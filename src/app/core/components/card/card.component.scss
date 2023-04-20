@@ -1,0 +1,166 @@
+.card {
+  padding: 1.25rem;
+  font-weight: 400;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  background: #F4F4F4;
+  border-radius: 10px;
+  margin-bottom: .65rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  cursor: grab;
+
+  &__panel {
+    display: flex;
+
+    button {
+      padding: 0;
+
+      ::ng-deep {
+        .material-icons-outlined {
+          font-size: 1.35rem;
+        }
+      }
+    }
+  }
+
+  &__edit-button {
+    margin-right: .25rem;
+  }
+
+  &__edit-button,
+  &__remove-button {
+    border: none;
+    background: inherit;
+    height: fit-content;
+
+    &:hover {
+      color: #cdccca;
+    }
+  }
+
+  &__priority {
+    margin: 0 auto 1rem 0;
+    width: 100%;
+    max-width: 3.75rem;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: .75rem;
+    color: #F4F4F4;
+  }
+
+  &__content {
+    margin-bottom: auto;
+    text-overflow: clip;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  &__owner {
+    margin-top: 1.25rem;
+    color: #6b6b6b;
+
+    span {
+      color: #000;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+
+    >:nth-child(1) {
+      display: flex;
+    }
+
+    &__priority-select {
+      width: 8.75rem;
+      margin-bottom: .5rem;
+
+      &-value {
+        padding: 0;
+
+        ::ng-deep {
+          .mdc-list-item__primary-text {
+            display: flex;
+            align-items: center;
+            column-gap: .25rem;
+          }
+        }
+      }
+
+      &-circle {
+        height: 0.65rem;
+        width: 0.65rem;
+        border-radius: 50%;
+      }
+    }
+
+    &__content-input,
+    &__owner-input {
+      padding: .35rem .75rem;
+      border-radius: .45rem;
+      margin-bottom: .5rem;
+      font-family: "Poppins";
+      font-style: normal;
+      border: 2px solid #cecece;
+    }
+
+    &__content-input {
+      min-height: 3.5rem;
+    }
+
+    &__edit-list-button {
+      padding: .25rem;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      border-radius: .45rem;
+      width: 100%;
+      max-width: 10.5rem;
+      color: #F4F4F4;
+      background-color: #000;
+      border: 2px solid;
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+
+    &__close-list-button {
+      border: none;
+      background: inherit;
+      padding: 0;
+      margin-left: auto;
+      height: fit-content;
+
+      &:hover {
+        color: #6b6b6b;
+      }
+    }
+  }
+
+  ::ng-deep {
+    .mdc-text-field--outlined {
+      height: 2rem !important;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .mat-mdc-form-field-bottom-align::before {
+      height: 0;
+      content: none !important;
+    }
+
+    .mat-mdc {
+      &-select {
+        font-size: .75rem !important;
+      }
+    }
+  }
+}

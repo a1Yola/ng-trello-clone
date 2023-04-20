@@ -1,0 +1,68 @@
+<div class="card" *ngIf="card">
+  <ng-container
+    *ngIf="list"
+    [ngTemplateOutlet]="isVisibleCard ? editCardForm : cardContent"></ng-container>
+
+  <ng-template #cardContent>
+    <div class="card__panel" *ngIf="card.id">
+      <div
+        class="card__priority"
+        [style.background-color]="myColorVariable(card.priority)">
+        {{ card.priority }}
+      </div>
+      <button class="card__edit-button" (click)="openEditForm($event)">
+        <mat-icon class="material-icons-outlined">edit</mat-icon>
+      </button>
+      <button class="card__remove-button" (click)="removeCard(card.id)">
+        <mat-icon class="material-icons-outlined">delete</mat-icon>
+      </button>
+    </div>
+    <span class="card__content">{{ card.content }}</span>
+    <span class="card__owner"
+      >Owner: <span>{{ card.owner.name }}</span></span
+    >
+  </ng-template>
+</div>
+
+<ng-template #editCardForm>
+  <form #editForm class="card-form" (click)="$event.stopPropagation()">
+    <div>
+      <mat-form-field appearance="outline" class="card-form__priority-select">
+        <mat-label>Card priority</mat-label>
+        <mat-select [(value)]="selectedPriority">
+          <mat-option
+            class="card-form__priority-select-value"
+            [value]="option.value"
+            *ngFor="let option of priorities"
+            (click)="$event.stopPropagation()">
+            <div
+              class="card-form__priority-select-circle"
+              [style.background-color]="option.bgColor"></div>
+            <span [ngStyle]="{ color: option.bgColor, 'font-size': '.85rem' }">{{
+              option.viewValue
+            }}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="card-form__close-list-button" (click)="isVisibleCard = false">
+        <mat-icon fontIcon="close"></mat-icon>
+      </button>
+    </div>
+
+    <input
+      class="card-form__content-input"
+      type="text"
+      placeholder="Content"
+      [(ngModel)]="currentContent"
+      [ngModelOptions]="{ standalone: true }" />
+    <input
+      class="card-form__owner-input"
+      type="text"
+      placeholder="Owner"
+      [(ngModel)]="currentOwner"
+      [ngModelOptions]="{ standalone: true }" />
+    <button class="card-form__edit-list-button" (click)="closeEditForm()">
+      Edit card
+    </button>
+  </form>
+</ng-template>

@@ -1,0 +1,73 @@
+<form class="card-form" *ngIf="list">
+  <mat-form-field appearance="outline" class="card-form__priority-select">
+    <mat-label>Card priority</mat-label>
+    <mat-select [(value)]="selectedPriority" class="card-form__priority-select-value">
+      <mat-option
+        class="card-form__priority-select-value"
+        [value]="option.value"
+        *ngFor="let option of priorities; trackBy: identifyOptionByValue"
+        (click)="$event.stopPropagation()">
+        <div
+          class="card-form__priority-select-circle"
+          [style.background-color]="option.bgColor"></div>
+        <span [style.color]="option.bgColor">{{ option.viewValue }}</span>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="card-form__content-input">
+    <mat-label>Card content</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="false"
+      [(ngModel)]="content"
+      [ngModelOptions]="{ standalone: true }" />
+    <button
+      *ngIf="content"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="content = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="card-form__owner-input">
+    <mat-label>Owner</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="false"
+      [(ngModel)]="ownerName"
+      [ngModelOptions]="{ standalone: true }" />
+    <button
+      *ngIf="ownerName"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="ownerName = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div *ngIf="list.id">
+    <button
+      *ngIf="list"
+      type="button"
+      class="card-form__add-card-button"
+      (click)="
+        addCard({
+          listId: list.id,
+          priority: selectedPriority,
+          content,
+          owner: { name: ownerName }
+        })
+      ">
+      Add Card
+    </button>
+    <button class="card-form__close-list-button" (click)="closeCardForm()">
+      <mat-icon fontIcon="close"></mat-icon>
+    </button>
+  </div>
+</form>

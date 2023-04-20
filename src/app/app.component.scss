@@ -1,0 +1,10 @@
+.app-root {
+  &__header {
+    height: 4rem;
+  }
+
+  &__body {
+    flex-grow: 1;
+    width: max-content;
+  }
+}

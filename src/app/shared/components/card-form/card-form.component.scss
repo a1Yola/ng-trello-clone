@@ -1,0 +1,100 @@
+.card-form {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  >:last-child {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    width: 70%;
+  }
+
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    .mat-mdc-form-field-infix {
+      min-height: 2.5rem;
+    }
+  }
+
+
+  &__priority-select {
+    &-circle {
+      height: .65rem;
+      width: .65rem;
+      border-radius: 50%;
+    }
+
+    &-value {
+      padding: 0;
+
+      ::ng-deep {
+        .mdc-list-item__primary-text {
+          display: flex;
+          align-items: center;
+          column-gap: .25rem;
+        }
+      }
+    }
+  }
+
+  &__priority-select,
+  &__content-input,
+  &__owner-input {
+    font-size: .9rem;
+    width: 70%;
+  }
+
+  &__add-card-button {
+    padding: .5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    border-radius: .5rem;
+    width: 100%;
+    color: #F4F4F4;
+    background-color: #000;
+    border: none;
+
+    &:hover {
+      color: #000;
+      background-color: #ccc;
+    }
+  }
+
+  &__close-list-button {
+    background-color: inherit;
+    padding: 0;
+    border: none;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+}
+
+::ng-deep {
+  .mdc-menu-surface.mat-mdc-select-panel {
+    padding: 0 .5rem !important;
+  }
+
+  .mat-mdc-floating-label {
+    top: 50% !important;
+  }
+
+  .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    top: 28px !important;
+  }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    width: fit-content;
+    height: 2rem;
+    padding: 5px;
+  }
+}

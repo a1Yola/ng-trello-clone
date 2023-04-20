@@ -1,0 +1,71 @@
+<ng-container *ngIf="list">
+  <div *ngIf="list.id" class="list">
+    <p *ngIf="!isVisibleEditForm">{{ list.title }}</p>
+    <input
+      class="list__edit-input"
+      #titleInput
+      type="text"
+      *ngIf="isVisibleEditForm"
+      [(ngModel)]="title"
+      [ngModelOptions]="{ standalone: true }"
+      [value]="title"
+      (blur)="closeEditForm(list.id)" />
+
+    <button class="list__menu-button" mat-button [matMenuTriggerFor]="menu">
+      <img src="assets/images/CombinedShape.png" alt="" />
+    </button>
+
+    <mat-menu class="list__menu" #menu="matMenu">
+      <button mat-menu-item (click)="openEditForm()">Edit</button>
+      <button mat-menu-item (click)="removeList(list.id)">Remove</button>
+    </mat-menu>
+  </div>
+
+  <ng-container *ngIf="cards$ | async as cards">
+    <ng-container *ngIf="status$ | async as status">
+      <ng-template
+        [ngIf]="!cards.length && status === 'loading'"
+        [ngIfElse]="cardsContainer">
+        <mat-spinner class="preloader"> </mat-spinner>
+      </ng-template>
+
+      <ng-template #cardsContainer>
+        <div
+          [ngClass]="cards.length ? 'cards-container' : 'empty-container'"
+          cdkDropList
+          [cdkDropListData]="cards"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let card of cards; trackBy: identifyCardById" class="card" cdkDrag>
+            <app-card *ngIf="list && card" [list]="list" [card]="card"></app-card>
+          </div>
+        </div>
+
+        <form
+          *ngIf="status !== 'pending'"
+          class="card-form"
+          #cardForm
+          (click)="$event.stopPropagation()">
+          <ng-container
+            [ngTemplateOutlet]="
+              isVisibleCardForm ? addCardForm : showCardFormButton
+            "></ng-container>
+
+          <ng-template #showCardFormButton>
+            <button
+              class="card-form__add-new-card-button"
+              (click)="isVisibleCardForm = true">
+              + Add new card
+            </button>
+          </ng-template>
+
+          <ng-template #addCardForm>
+            <app-card-form
+              [isVisibleForm]="isVisibleCardForm"
+              (changeIsVisibleForm)="closeCardForm($event)"
+              [list]="list"></app-card-form>
+          </ng-template>
+        </form>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+</ng-container>
